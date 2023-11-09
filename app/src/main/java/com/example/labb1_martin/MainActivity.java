@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Link layout to variables START
         refreshButton = findViewById(R.id.refreshButton);
         viewContainer = findViewById(R.id.weathercontainer);
         temperatureView = findViewById(R.id.temperature);
@@ -27,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         cloudView = findViewById(R.id.cloudiness);
         rainView = findViewById(R.id.rain);
         imageView = findViewById(R.id.weatherImage);
+        //Link layout to variables END
+
+        refreshButton.setOnClickListener(view -> {
+
+        });
     }
 }
 
