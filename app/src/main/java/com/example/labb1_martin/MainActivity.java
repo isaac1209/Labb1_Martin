@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //Link layout to variables END
 
         refreshButton.setOnClickListener(view -> {
+
             Runnable inBackground = new Runnable() {
                 @Override
                 public void run(){
@@ -55,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
 
             Thread thread = new Thread(inBackground);
             thread.start();
+
         });
     }
 
 
     public void updateTemp(View view) {
-
         Runnable inBackground = new Runnable() {
             @Override
             public void run() {
@@ -68,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
                     Document doc = XMLParser.getDOM();
                     if(doc!=null){
                         NodeList nodeList=doc.getElementsByTagName("*");
-                        String res = GetVal(nodeList);
+                        String res = getTemperature(nodeList);
                         System.out.print(res);
+
                     }
                 }
                 catch (Exception e){
@@ -81,21 +84,65 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread(inBackground);
         thread.start();
 
-        System.out.println("Tja");
     }
 
-    public String GetVal(NodeList nodeList){
+    public String getTemperature(NodeList nodeList){
         for(int i=0; i<nodeList.getLength();i++){
             Element element = (Element)nodeList.item(i);
-            if(element.getNodeName().equals("humidity")){
+            if(element.getNodeName().equals("temperature")){
+                return element.getAttribute("value");
+                        }
+        }
+        return "";
+    }
+
+  public String GetImage(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("symbol")){
+                return element.getAttribute("code") + ".png";
+            }
+        }
+        return "";
+    }
+
+
+    public String getWind(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("windSpeed")){
+                return element.getAttribute("mps");
+            }
+        }
+        return "";
+    }
+    public String GetPressure(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("pressure")){
                 return element.getAttribute("value");
             }
         }
         return "";
     }
+
+    public String GetRain(NodeList nodeList) {
+        String max = "";
+        String min = "";
+        String minMax = "";
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element element = (Element) nodeList.item(i);
+            if (element.getNodeName().equals("precipitation")) {
+                max = element.getAttribute("minvalue");
+                min = element.getAttribute("maxvalue");
+
+                return minMax = "Max = " +  max +  " Min = " + min;
+            }
+        }
+
+        return "";
+    }
 }
-
-
 //Hej Emil & Emil
 //Test
 //hahahahahaha
