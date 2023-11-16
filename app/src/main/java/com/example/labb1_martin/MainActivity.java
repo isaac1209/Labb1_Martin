@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     if(doc!=null){
                         NodeList nodeList=doc.getElementsByTagName("*");
                         String res = GetVal(nodeList);
+
                         System.out.print(res);
+
                     }
                 }
                 catch (Exception e){
@@ -76,9 +78,18 @@ public class MainActivity extends AppCompatActivity {
         }
         return "";
     }
+
+
+    public String getWind(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("windSpeed")){
+                return element.getAttribute("mps");
+            }
+        }
+        return "";
+    }
 }
-
-
 //Hej Emil & Emil
 //Test
 //hahahahahaha
