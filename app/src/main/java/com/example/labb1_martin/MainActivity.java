@@ -96,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return "";
     }
+    public String GetPressure(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("pressure")){
+                return element.getAttribute("value");
+            }
+        }
+        return "";
+    }
 }
 //Hej Emil & Emil
 //Test
