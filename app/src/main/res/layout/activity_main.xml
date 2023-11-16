@@ -6,14 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_width="214dp"
+        android:layout_height="104dp"
+        android:text="Refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974" />
+
+    <ImageView
+        android:id="@+id/weatherImage"
+        android:layout_width="312dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/refreshButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/weathercontainer"
+        android:layout_width="241dp"
+        android:layout_height="209dp"
+        app:layout_constraintBottom_toTopOf="@+id/refreshButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherImage"
+        app:layout_constraintVertical_bias="0.554" />
+
+    <TextView
+        android:id="@+id/windspeed"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:text="wind"
+        app:layout_constraintBottom_toTopOf="@+id/cloudiness"
+        app:layout_constraintEnd_toEndOf="@+id/weathercontainer"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/weathercontainer" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="Temp"
+        app:layout_constraintBottom_toTopOf="@+id/windspeed"
+        app:layout_constraintEnd_toEndOf="@+id/weathercontainer"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/weathercontainer"
+        app:layout_constraintTop_toTopOf="@+id/weathercontainer"
+        app:layout_constraintVertical_bias="0.235" />
+
+    <TextView
+        android:id="@+id/cloudiness"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="12dp"
+        android:text="cloud"
+        app:layout_constraintBottom_toTopOf="@+id/rain"
+        app:layout_constraintEnd_toEndOf="@+id/weathercontainer"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/weathercontainer" />
+
+    <TextView
+        android:id="@+id/rain"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="12dp"
+        android:text="rain"
+        app:layout_constraintBottom_toBottomOf="@+id/weathercontainer"
+        app:layout_constraintEnd_toEndOf="@+id/weathercontainer"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/weathercontainer" />
+
+    <TextView
+        android:id="@+id/titletext"
+        android:layout_width="381dp"
+        android:layout_height="65dp"
+        android:text="Weather APP #1"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
 
     <Button
         android:id="@+id/button"
