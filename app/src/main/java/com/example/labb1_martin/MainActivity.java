@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     Document doc = XMLParser.getDOM();
                     if(doc!=null){
                         NodeList nodeList=doc.getElementsByTagName("*");
-                        String res = GetVal(nodeList);
+                        String res = getTemperature(nodeList);
                         System.out.print(res);
 
                     }
@@ -66,7 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String GetImage(NodeList nodeList){
+    public String getTemperature(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("temperature")){
+                return element.getAttribute("value");
+                        }
+        }
+        return "";
+    }
+
+  public String GetImage(NodeList nodeList){
         for(int i=0; i<nodeList.getLength();i++){
             Element element = (Element)nodeList.item(i);
             if(element.getNodeName().equals("symbol")){
