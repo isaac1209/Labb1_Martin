@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
                         Document doc = XMLParser.getDOM();
                         if(doc != null){
                             NodeList nodeList = doc.getElementsByTagName("*");
+                            rainView.setText("Rain: " + GetRain(nodeList));
+                            temperatureView.setText("Temperature: " + getTemperature(nodeList));
+                            cloudView.setText("Cloudiness: " + getCloudiness(nodeList));
+                            //KOD FÖR ATT SKRIVA UT PÅ SKÄRMEN HÄR---------------
 
                         }
                     }
@@ -142,7 +146,20 @@ public class MainActivity extends AppCompatActivity {
 
         return "";
     }
+
+    public String getCloudiness(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("cloudiness")){
+                return element.getAttribute("percent");
+            }
+        }
+        return "";
+    }
+
 }
+
+
 //Hej Emil & Emil
 //Test
 //hahahahahaha
