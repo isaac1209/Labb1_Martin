@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void updateTemp(View view) {
-
         Runnable inBackground = new Runnable() {
             @Override
             public void run() {
@@ -53,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         NodeList nodeList=doc.getElementsByTagName("*");
                         String res = getTemperature(nodeList);
                         System.out.print(res);
+
                     }
                 }
                 catch (Exception e){
@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread(inBackground);
         thread.start();
 
-        System.out.println("Tja");
     }
 
     public String getTemperature(NodeList nodeList){
@@ -72,13 +71,32 @@ public class MainActivity extends AppCompatActivity {
             Element element = (Element)nodeList.item(i);
             if(element.getNodeName().equals("temperature")){
                 return element.getAttribute("value");
+                        }
+        }
+        return "";
+    }
+
+  public String GetImage(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("symbol")){
+                return element.getAttribute("code") + ".png";
+            }
+        }
+        return "";
+    }
+
+
+    public String getWind(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("windSpeed")){
+                return element.getAttribute("mps");
             }
         }
         return "";
     }
 }
-
-
 //Hej Emil & Emil
 //Test
 //hahahahahaha
