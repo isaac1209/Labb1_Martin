@@ -38,6 +38,26 @@ public class MainActivity extends AppCompatActivity {
         //Link layout to variables END
 
         refreshButton.setOnClickListener(view -> {
+
+            Runnable inBackground = new Runnable() {
+                @Override
+                public void run(){
+                    try {
+                        Document doc = XMLParser.getDOM();
+                        if(doc != null){
+                            NodeList nodeList = doc.getElementsByTagName("*");
+
+                        }
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            Thread thread = new Thread(inBackground);
+            thread.start();
+
         });
     }
 
