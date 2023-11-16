@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         //Link layout to variables END
 
         refreshButton.setOnClickListener(view -> {
-
         });
     }
 
@@ -103,6 +103,23 @@ public class MainActivity extends AppCompatActivity {
                 return element.getAttribute("value");
             }
         }
+        return "";
+    }
+
+    public String GetRain(NodeList nodeList) {
+        String max = "";
+        String min = "";
+        String minMax = "";
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element element = (Element) nodeList.item(i);
+            if (element.getNodeName().equals("precipitation")) {
+                max = element.getAttribute("minvalue");
+                min = element.getAttribute("maxvalue");
+
+                return minMax = "Max = " +  max +  " Min = " + min;
+            }
+        }
+
         return "";
     }
 }
