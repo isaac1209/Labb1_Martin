@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                             rainView.setText("Rain: " + GetRain(nodeList));
                             temperatureView.setText("Temperature: " + getTemperature(nodeList));
                             cloudView.setText("Cloudiness: " + getCloudiness(nodeList));
+                            int resId = getResources().getIdentifier(GetImage(nodeList), "drawable", getPackageName());
+                            imageView.setImageResource(resId);
                             //KOD FÖR ATT SKRIVA UT PÅ SKÄRMEN HÄR---------------
 
                         }
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i<nodeList.getLength();i++){
             Element element = (Element)nodeList.item(i);
             if(element.getNodeName().equals("symbol")){
-                return element.getAttribute("code") + ".png";
+                return element.getAttribute("code");
             }
         }
         return "";
