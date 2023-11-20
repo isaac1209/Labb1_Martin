@@ -159,6 +159,16 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
+    public String getWindDirection(NodeList nodeList){
+        for(int i=0; i<nodeList.getLength();i++){
+            Element element = (Element)nodeList.item(i);
+            if(element.getNodeName().equals("windDirection")){
+                return element.getAttribute("name");
+            }
+        }
+        return "";
+    }
+
 }
 
 
