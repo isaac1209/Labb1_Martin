@@ -47,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
                         if(doc != null){
                             NodeList nodeList = doc.getElementsByTagName("*");
                             rainView.setText("Rain: " + GetRain(nodeList));
-                            temperatureView.setText("Temperature: " + getTemperature(nodeList));
-                            cloudView.setText("Cloudiness: " + getCloudiness(nodeList));
+                            temperatureView.setText("Temperature: " + getTemperature(nodeList) + " Celsius");
+                            cloudView.setText("Cloudiness: " + getCloudiness(nodeList) + "%");
+                            String windString = "Wind: " + getWind(nodeList) + " m/s in direction " + getWindDirection(nodeList);
+                            windView.setText(windString);
                             int resId = getResources().getIdentifier(GetImage(nodeList), "drawable", getPackageName());
                             imageView.setImageResource(resId);
                             //KOD FÖR ATT SKRIVA UT PÅ SKÄRMEN HÄR---------------
-
                         }
                     }
                     catch (Exception e){
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
             thread.start();
 
         });
+
+        refreshButton.callOnClick();
     }
 
 
